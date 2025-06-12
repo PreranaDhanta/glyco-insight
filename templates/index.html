@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Diabetes Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg">
+  <div class="form-box">
+    <h1>Diabetes Prediction Form</h1>
+    <form method="POST" action="/predict">
+
+      <!-- Name and Email -->
+      <label for="name">Name:</label><br>
+      <input type="text" name="name" placeholder="Enter your name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" name="email" placeholder="Enter your email address" required><br><br>
+
+      <!-- Medical Inputs -->
+      {% for field in ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness',
+                       'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age'] %}
+        <label for="{{ field }}">{{ field }}</label><br>
+        <input type="number" name="{{ field }}" placeholder="Enter {{ field }}" step="any" required><br><br>
+      {% endfor %}
+
+      <input type="submit" value="Predict">
+    </form>
+  </div>
+</body>
+</html>
+
+
