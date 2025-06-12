@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial; padding: 30px; }
+        h1 { text-align: center; color: #0077cc; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        td, th { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Diabetes Diagnostic Report</h1>
+    <p><strong>Name:</strong> {{ name }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+
+    <h2>Test Details</h2>
+    <table>
+        {% for key, value in input_data.items() %}
+        <tr><th>{{ key }}</th><td>{{ value }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>Prediction</h2>
+    <p><strong>Result:</strong> {{ prediction }}</p>
+    <p><strong>Confidence:</strong> {{ accuracy * 100 }}%</p>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg">
+  <div class="result-box">
+    <h1>Your Diagnostic Result</h1>
+    <p><strong>Name:</strong> {{ result[2][0] }}</p>
+    <p><strong>Email:</strong> {{ result[2][1] }}</p>
+    <p><strong>Prediction:</strong> {{ result[1][model] }}</p>
+    <p><strong>Accuracy:</strong> {{ result[3] * 100 }}%</p>
+
+    <form action="/download_pdf" method="POST">
+      <input type="hidden" name="name" value="{{ result[2][0] }}">
+      <input type="hidden" name="email" value="{{ result[2][1] }}">
+      <input type="hidden" name="input_data" value="{{ result[0] }}">
+      <input type="hidden" name="prediction" value="{{ result[1][model] }}">
+      <input type="hidden" name="accuracy" value="{{ result[3] }}">
+      <button type="submit">Download PDF Report</button>
+    </form>
+  </div>
+</body>
+</html>
